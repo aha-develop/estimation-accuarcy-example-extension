@@ -1,0 +1,32 @@
+{
+  "name": "fredwin.estimation-accuracy",
+  "description": "Estimation Accuracy",
+  "version": "0.0.0",
+  "author": "fredwin",
+  "repository": {
+    "type": "git",
+    "url": "TODO: Add the GitHub URL to your extension in package.json"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^17.0.42"
+  },
+  "ahaExtension": {
+    "contributes": {
+      "views": {
+        "estimationAccuracy": {
+          "title": "Estimation Accuracy",
+          "entryPoint": "src/views/estimationAccuracy.js",
+          "host": "page",
+          "location": {
+            "menu": "Plan"
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@nivo/core": "0.70.1",
+    "@nivo/line": "0.70.1"
+  }
+}
