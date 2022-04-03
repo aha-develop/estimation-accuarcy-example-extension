@@ -1,11 +1,11 @@
 {
   "name": "fredwin.estimation-accuracy",
   "description": "Estimation Accuracy",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "fredwin",
   "repository": {
     "type": "git",
-    "url": "TODO: Add the GitHub URL to your extension in package.json"
+    "url": "https://github.com/aha-develop/estimation-accuracy-example"
   },
   "license": "MIT",
   "devDependencies": {
