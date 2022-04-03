@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { ResponsiveLine } from "@nivo/line";
 
+/**
+ * Fetch all completed iterations
+ */
 const getCompletedIterations = async () => {
   return aha.models.Iteration.select("id", "name", "startDate")
     .order({ startDate: "ASC" })
@@ -8,6 +11,10 @@ const getCompletedIterations = async () => {
     .findInBatches();
 };
 
+/**
+ * Fetch all estimation events for estimate changed and iteration start, grouped
+ * by iteration
+ */
 const getEstimationEvents = async () => {
   const query = `
     query GetEstimationEvents($filters: RecordEventFilters!) {
@@ -37,13 +44,17 @@ const Chart = () => {
   const [iterations, setIterations] = useState(null);
   const [events, setEvents] = useState(null);
 
+  // When the component is loaded fetch the iterations and events
   useEffect(() => {
     getCompletedIterations().then(setIterations);
     getEstimationEvents().then(setEvents);
   }, []);
 
+  // Return a loading indicator until the data is ready
   if (!iterations || !events) return <aha-spinner />;
 
+  // Filter the iterations to the ones with event data and sort them by start
+  // date
   const iterationsWithData = [...new Set(events.map((e) => e.groupByValue))]
     .reduce((acc, id) => {
       const iteration = iterations.find((i) => i.id === id);
@@ -58,6 +69,7 @@ const Chart = () => {
     {
       id: "Estimation Accuracy",
       data: iterationsWithData.map((iteration) => {
+        // Get the iteration's starting estimate
         const originalEstimate =
           events.find(
             (event) =>
@@ -65,6 +77,7 @@ const Chart = () => {
               event.eventType ===
                 aha.enums.RecordEventTypeEnum.ITERATION_START.value
           )?.originalEstimate || 0;
+        // Get all the estimate changes associated with the iteration
         const estimateChangedBy = Math.abs(
           events.find(
             (event) =>
@@ -74,6 +87,7 @@ const Chart = () => {
           )?.originalEstimate || 0
         );
 
+        // Return a data point for the % change in estimation
         return {
           x: iteration.name,
           y:
