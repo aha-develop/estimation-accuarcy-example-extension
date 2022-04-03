@@ -1,24 +1,6 @@
 # Estimation Accuracy
-  
-TODO: Supply a short overview of the functionality the extension brings to Aha! Develop
-This [Aha! Develop](https://www.aha.io/develop/overview) extension enables...
 
-It provides these contributions:
-
-TODO: Add a contribution list here. These should briefly describe each of the features provided by this extension.
-
-## Demo
-
-TODO: Add a short .gif screen recording showing some of the highlights of your extension. This can be recorded using a tool like [LICECap](https://www.cockos.com/licecap/).
-
-![demo](demo.gif)
-
-## Installing the extension
-
-**Note: In order to install an extension into your Aha! Develop account, you must be an account administrator.**
-
-TODO: Fill in a link to your built extension package
-Install the Estimation Accuracy extension by clicking [here](https://secure.aha.io/settings/account/extensions/install?url=).
+Display an estimation accuracy chart in a page view, showing estimation accuracy across all completed sprints.
 
 ## Working on the extension
 
@@ -30,9 +12,14 @@ npm install -g aha-cli
 
 Clone the repo:
 
-TODO: Add the repository URL here
 ```sh
-git clone ...
+git clone https://github.com/aha-develop/estimation-accuracy-example.git
+```
+
+Install dependencies:
+
+```sh
+yarn install
 ```
 
 **Note: In order to install an extension into your Aha! Develop account, you must be an account administrator.**
