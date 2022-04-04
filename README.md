@@ -19,7 +19,7 @@ git clone https://github.com/aha-develop/estimation-accuracy-example.git
 Install dependencies:
 
 ```sh
-yarn install
+npm install
 ```
 
 **Note: In order to install an extension into your Aha! Develop account, you must be an account administrator.**
